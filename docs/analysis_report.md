@@ -18,16 +18,15 @@
 3. 汎用カーネル側で 2023-01 以降に修正され、このソース（2020 版）に**入っていない**ものが 439 件見つかった（機械照合）。
    ただし **アプリ/shell から到達できて、かつ公開手法がある**ものは限られる。到達可能面（binder / kgsl / ベンダ独自 proc）で有力なのは次の 2 系統:
 
-   - **(A) binder `binder_transaction_buffer_release()` の不整合（CVE-2023-20938 系）**
-     - 修正（`binder: fix UAF caused by faulty buffer cleanup` / FROMLIST `66cba6260a95` → AOSP `2218752325a9`、2023-05、ASB 2023-07）は
-       **4.14 系に一切バックポートされていない**（AOSP `deprecated/android-4.14-stable` の binder 最終修正は 2023-06 のメモリリーク修正のみ、linux-4.14.y も同様）＝ **4.14 端末は恒久的に未修正**。
-     - **ただし重要**: 本ソースの binder は CAF 独自バリアントで、脆弱形状（`is_failure && failed_at ? failed_at : 全体を解放`）ではなく
-       `is_failure ? failed_at : 全体を解放` かつ `binder_free_buf()` が `is_failure=false` 固定になっている。
-       この形は「エラー経路で failed_at==0 のとき *何も解放しない*」＝ upstream の**修正後**と同じ意味論なので、
-       **既知のトリガ（エラー経路での過剰デクリメント）は本ソースでは成立しない**。
-       CAF 系 msm-4.14 の別ツリー 3 種（Motorola 2024-07 版 / sm8150 LA.UM.9.1.r1-12000 / caf_msm-4.14）も同じ形状であることを確認済み。
-       → **端末も同じ形状である可能性が高い**が、端末カーネルが CAF 経由で binder を更新していた場合は形状が変わり得るので、
-         **実機でトリガを 1 回走らせて確定させる**価値がある（用意済み: 下記 §4 / `tools/build_trigger_poc.sh`）。
+   - **(A) binder `binder_transaction_buffer_release()`（CVE-2023-20938 / CVE-2023-21255）— 本命視は撤回（§3.1 参照）**
+     - 公開 PoC が前提とする脆弱形 `is_failure && failed_at ? failed_at : 全体を解放` は **5.4/5.10 系にしか存在しない**
+       （2019 年の `44d8047f1d87` 以降。実測: v5.4.230:2289 / v5.10.100:2261 に `&&` 形、**v4.14.336 にはこの ternary 自体が無い**）。
+     - 本ソース（CAF/4.14 系）も、2024-11 時点の CAF 系ツリー（LineageOS sm7125 = LA.UM.9.1.r1-16400, `binder.c:2500`）も
+       `is_failure ? failed_at : 全体を解放`。エラー経路で `failed_at==0` のとき**何も解放しない**ため、
+       **公開トリガ（未処理オブジェクトの過剰デクリメント）は成立しない**。
+     - → 「4.14 に修正が無い」ことは「4.14 が脆弱」を意味しない（元々このバグの形になっていない）。
+     - 実機でのトリガ 1 回実行は、**端末が 5.4/5.10 形の binder を持ち込んでいないかの判別**としてのみ価値がある
+       （落ちれば想定外＝朗報、無反応なら想定どおり）。用意済み: §4 / `tools/build_trigger_poc.sh`。
    - **(B) kgsl（Adreno / `/dev/kgsl-3d0`）**: アプリから直接 ioctl を叩ける**唯一級の広い攻撃面**。
      CAF は msm-4.14 に対して 2023〜2026 年に多数の kgsl セキュリティ修正を出しており（§3.2 の表）、
      2020 年版ソースには**構造的に存在しない修正**も多い（例: `iommu_addr_in_svm_ranges()` のラップアラウンド検査 = 2023-09 修正は本ソースに該当関数自体が無い）。
@@ -79,32 +78,48 @@
 
 ## 3. 解析結果
 
-### 3.1 binder（CVE-2023-20938 系）— 「4.14 に修正が来ていない」が「形状が違う」
+### 3.1 binder（CVE-2023-20938 / CVE-2023-21255）— 「本命」から外した理由
 
-* 脆弱コード（upstream 5.4/5.10 の 2023-05 以前）:
+**脆弱性の仕組み（公開解析より）**: トランザクションの `offsets_size` を非アラインで送ると、
+binder はオブジェクト処理ループへ入る前にエラー（`err_bad_offset`）へ飛ぶ。このとき `buffer_offset` は 0 のまま
+`binder_transaction_buffer_release(proc, buffer, /*failed_at*/0, /*is_failure*/true)` が呼ばれる。
+
+* **5.4/5.10 の（壊れた）形**:
 
 ```c
 off_end_offset = is_failure && failed_at ? failed_at :
                  off_start_offset + buffer->offsets_size;
-...
-err_copy_data_failed:
-        binder_transaction_buffer_release(target_proc, t->buffer, buffer_offset /* =0 のことがある */, true);
 ```
-  → エラーが「offsets ループ開始前」に起きると `failed_at==0` 扱いで**バッファ全体を解放**＝未処理オブジェクトの参照カウントを過剰に減算 → `binder_node`(kmalloc-128) UAF。
+  `true && 0` = false なので `off_end_offset` はバッファ末尾 → **未処理オブジェクトまで全部解放** →
+  ノードの参照カウント過剰デクリメント → `binder_node`/`binder_ref`(kmalloc-128) の UAF。
+  これが CVE-2023-20938（2023-02 ASB で暫定対処、2023-07 ASB = CVE-2023-21255 で根本対処）。
 
-* 修正版（`binder_release_entire_buffer()` 分離＋`off_end_offset` を明示）は **AOSP 5.4/5.10 のみ**。4.14 へは未バックポート（確認済み）。
-* **本ソースの形状**（`drivers/android/binder.c:2422`）:
+* **本ソース／CAF 系の形**（`drivers/android/binder.c:2422`）:
 
 ```c
 off_end_offset = is_failure ? failed_at :
                  off_start_offset + buffer->offsets_size;
 ```
-  さらに `binder_free_buf()` は `binder_transaction_buffer_release(proc, buffer, 0, false)` 固定（`is_failure=false`）。
-  → エラー経路で `failed_at==0` のときは**何も解放しない**（＝upstream 修正版と同じ意味論）。**既知トリガは成立しない**。
-  ただしこれは「本ソース」の話。端末カーネルは 4 年新しいので、実機で確認する（§4）。
+  `failed_at==0` のとき `off_end_offset = 0` → ループが 1 回も回らず**何も解放しない**。
+  つまり「失敗時に余計な後始末をしない」＝ upstream 修正版と同じ意味論で、**公開トリガでは壊れない**。
 
-* 実機確認用のトリガ: `0xAtharv/CVE-2023-20938-Public`（研究用に公開されているトリガ、`/dev/hwbinder` を使用）を
-  **aarch64 静的バイナリにビルドするスクリプト**を用意した（`tools/build_trigger_poc.sh`）。既にビルド済みの成果物も置いてある（§4）。
+**バージョン別の実測結果**（`git show <tag>:drivers/android/binder.c` を突き合わせ）:
+
+| ツリー | 形 | 意味 |
+|---|---|---|
+| v4.14.336（linux-4.14.y 最終） | 当該 ternary が**存在しない**（旧実装。`task_fd_install` あり / `binder_get_object` なし） | そもそもこのバグの形ではない |
+| v5.4.230 / v5.10.100 | `is_failure && failed_at ? …` | **脆弱**（GKI 5.4/5.10） |
+| P710 ベンダツリー（2020-10-23） | `is_failure ? failed_at : …`（:2422）、呼び出しは 3581（エラー経路: `buffer_offset,true`）/ 3860（BC_FREE_BUFFER: `0,false`） | 公開トリガ無効 |
+| LineageOS sm7125（CAF LA.UM.9.1.r1-16400 = 2024-11 相当） | `is_failure ? failed_at : …`（:2500） | CAF 系は 2024 年まで同じ意味論を維持 |
+
+→ **「4.14 に固定パッチが無い」＝「4.14 が脆弱」ではない**（元から壊れた形になっていない）。
+したがって binder を本命に据えるのは取り下げ、**kgsl（§3.2）を主軸**に移す。
+
+* なお 2023-02 ASB の CVE-2023-20938 修正コミット群（`baa23246e93f` 等）は
+  `binder_translate_fd_array()` の `num_fds==0` 対応など**互換性の修正**で、本ソースには入っていないが
+  セキュリティ上の影響は無い（ユーザ空間互換の話）。
+* 実機確認用のトリガ（`0xAtharv/CVE-2023-20938-Public`）は §4 に残す。目的は
+  **「端末が 5.4/5.10 形の binder を持ち込んでいないかの判別」**（落ちれば想定外の朗報、無反応なら想定どおり）。
 
 ### 3.2 kgsl（Adreno, `/dev/kgsl-3d0` = アプリ到達可）— CAF の修正タイムライン
 
