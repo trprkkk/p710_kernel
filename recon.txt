@@ -1,0 +1,626 @@
+################ 1. BUILD / PATCH LEVEL ################
+[ro.build.date.utc]: [1732197370]
+[ro.build.date]: [Thu Nov 21 21:56:10 CST 2024]
+[ro.build.fingerprint]: [Rakuten/P710/P710:10/QKQ1.200706.002/551:user/release-keys]
+[ro.build.version.all_codenames]: [REL]
+[ro.build.version.base_os]: []
+[ro.build.version.codename]: [REL]
+[ro.build.version.incremental]: [551]
+[ro.build.version.min_supported_target_sdk]: [23]
+[ro.build.version.preview_sdk]: [0]
+[ro.build.version.preview_sdk_fingerprint]: [REL]
+[ro.build.version.release]: [10]
+[ro.build.version.sdk]: [29]
+[ro.build.version.security_patch]: [2023-01-01]
+[ro.product.build.version.incremental]: [551]
+[ro.product.build.version.release]: [10]
+[ro.product.build.version.sdk]: [29]
+[ro.system.build.version.incremental]: [551]
+[ro.system.build.version.release]: [10]
+[ro.system.build.version.sdk]: [29]
+--- SPL (framework / vendor / bootimage) ---
+ro.build.version.security_patch               2023-01-01
+ro.vendor.build.version.security_patch        
+ro.bootimage.build.version.security_patch     
+ro.system.build.version.security_patch        
+ro.product.build.version.security_patch       
+ro.odm.build.version.security_patch           
+--- AVB / bootloader state ---
+ro.boot.veritymode                            enforcing
+ro.boot.veritymode.managed                    
+ro.boot.flash.locked                          1
+ro.boot.vbmeta.device_state                   locked
+ro.boot.vbmeta.hash_alg                       sha256
+ro.boot.vbmeta.digest                         9535688ce84429a08011199b0284458319a98dbe68f2e12fb788d22363899515
+ro.boot.vbmeta.size                           5952
+ro.boot.slot_suffix                           _a
+ro.boot.hardware                              qcom
+ro.boot.hardware.platform                     
+ro.boot.bootloader                            
+ro.boot.baseband                              msm
+ro.boot.verifiedbootstate                     green
+--- kernel ---
+Linux version 4.14.117-perf (android@HTSVR18) (clang version 8.0.12 for Android NDK) #1 SMP PREEMPT Thu Nov 21 23:35:05 CST 2024
+Linux localhost 4.14.117-perf #1 SMP PREEMPT Thu Nov 21 23:35:05 CST 2024 aarch64
+--- 起動時間 / 再起動の痕跡 ---
+ 18:17:27 up 32 days, 20:26,  0 users,  load average: 0.00, 0.00, 0.00
+cpu  49002219 12828628 53543717 92939054 1559488 10849485 3237168 0 0 0
+cpu0 6507823 2338936 11036230 92885163 1558526 3038424 1582703 0 0 0
+cpu1 7892983 2096594 12477318 7286 160 5013696 818243 0 0 0
+
+################ 2. KERNEL CONFIG (running) ################
+config dumped: /data/local/tmp/config.gz.dump (5976 lines)
+CONFIG_IKCONFIG=y
+CONFIG_IKCONFIG_PROC=y
+# CONFIG_USER_NS is not set
+CONFIG_BPF=y
+CONFIG_BPF_SYSCALL=y
+CONFIG_SLAB_FREELIST_RANDOM=y
+CONFIG_SLAB_FREELIST_HARDENED=y
+CONFIG_MODULES_USE_ELF_RELA=y
+CONFIG_MODULES=y
+CONFIG_MODULES_TREE_LOOKUP=y
+CONFIG_ARM64_PAN=y
+CONFIG_RANDOMIZE_BASE=y
+CONFIG_RANDOMIZE_MODULE_REGION_FULL=y
+# CONFIG_NF_TABLES is not set
+# CONFIG_BPF_JIT is not set
+# CONFIG_BPF_STREAM_PARSER is not set
+CONFIG_TUN=y
+# CONFIG_TUN_VNET_CROSS_LE is not set
+CONFIG_TOUCHSCREEN_HIMAX_CHIPSET=y
+CONFIG_TOUCHSCREEN_HIMAX_I2C=y
+# CONFIG_TOUCHSCREEN_HIMAX_ONCELL is not set
+CONFIG_TOUCHSCREEN_HIMAX_INCELL=y
+# CONFIG_TOUCHSCREEN_HIMAX_IC_HX83191 is not set
+CONFIG_TOUCHSCREEN_HIMAX_IC_HX83112=y
+# CONFIG_TOUCHSCREEN_HIMAX_IC_HX83111 is not set
+# CONFIG_TOUCHSCREEN_HIMAX_IC_HX83103 is not set
+# CONFIG_TOUCHSCREEN_HIMAX_IC_HX83102 is not set
+CONFIG_TOUCHSCREEN_HIMAX_DEBUG=y
+# CONFIG_TOUCHSCREEN_HIMAX_INSPECT is not set
+# CONFIG_DEVMEM is not set
+CONFIG_ASHMEM=y
+CONFIG_ION=y
+# CONFIG_ION_SYSTEM_HEAP is not set
+# CONFIG_ION_CARVEOUT_HEAP is not set
+# CONFIG_ION_CHUNK_HEAP is not set
+# CONFIG_ION_CMA_HEAP is not set
+# CONFIG_ION_FORCE_DMA_SYNC is not set
+CONFIG_ION_DEFER_FREE_NO_SCHED_IDLE=y
+# CONFIG_KASAN is not set
+CONFIG_BPF_EVENTS=y
+CONFIG_HARDENED_USERCOPY=y
+# CONFIG_HARDENED_USERCOPY_PAGESPAN is not set
+CONFIG_SECURITY_SELINUX=y
+# CONFIG_SECURITY_SELINUX_BOOTPARAM is not set
+# CONFIG_SECURITY_SELINUX_DISABLE is not set
+CONFIG_SECURITY_SELINUX_DEVELOP=y
+CONFIG_SECURITY_SELINUX_AVC_STATS=y
+CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
+--- sysctl 状態 ---
+kernel.unprivileged_bpf_disabled         
+kernel.dmesg_restrict                    
+kernel.kptr_restrict                     
+kernel.perf_event_paranoid               3
+kernel.yama.ptrace_scope                 
+kernel.unprivileged_userns_clone         
+vm.mmap_min_addr                         
+net.ipv4.ping_group_range                0	2147483647
+
+################ 3. SELinux ################
+Enforcing
+131
+################ 4. /dev インベントリ (perm + label) ################
+total 8
+crw-------  1 root      root            u:object_r:device:s0                     493,   0 1970-01-01 09:00 6002000.stm
+drwx--x--x  2 root      root            u:object_r:properties_device:s0              4300 1970-01-01 09:00 __properties__
+crw-rw-r--  1 system    system          u:object_r:qdsp_device:s0                492,   0 1970-01-01 09:00 adsprpc-smd
+crw-r--r--  1 system    system          u:object_r:xdsp_device:s0                492,   1 1970-01-01 09:00 adsprpc-smd-secure
+crw-------  1 root      root            u:object_r:device:s0                     236,   1 1970-01-01 09:00 apr_apps2
+crw-rw-rw-  1 root      root            u:object_r:ashmem_device:s0               10,  56 1970-01-01 09:00 ashmem
+crw-r-----  1 radio     radio           u:object_r:at_device:s0                  236,   0 1970-01-01 09:00 at_mdm0
+crw-r-----  1 radio     radio           u:object_r:at_device:s0                  486,   0 1970-01-01 09:00 at_usb0
+crw-------  1 root      root            u:object_r:at_device:s0                  486,   1 1970-01-01 09:00 at_usb1
+crw-------  1 root      root            u:object_r:at_device:s0                  486,   2 1970-01-01 09:00 at_usb2
+crw-rw----  1 system    audio           u:object_r:avtimer_device:s0             491,   0 1970-01-01 09:00 avtimer
+crw-rw-rw-  1 root      root            u:object_r:binder_device:s0               10,  55 1970-01-01 09:00 binder
+dr-xr-xr-x  3 system    system          u:object_r:cgroup:s0                            0 1970-01-01 09:00 blkio
+drwxr-xr-x  6 root      root            u:object_r:block_device:s0                   2780 2026-09-24 06:12 block
+crw-rw----  1 bluetooth system          u:object_r:bt_device:s0                  499,   0 1970-01-01 09:00 btpower
+drwxr-xr-x  3 root      root            u:object_r:device:s0                           60 2026-09-13 17:35 bus
+crw-rw----  1 system    vendor_qdss     u:object_r:device:s0                     494,   0 1970-01-01 09:00 byte-cntr
+crw-------  1 root      root            u:object_r:device:s0                     485,   1 1970-01-01 09:00 ccid_bulk
+crw-------  1 root      root            u:object_r:device:s0                     485,   0 1970-01-01 09:00 ccid_ctrl
+drw-------  2 root      root            u:object_r:cgroup_bpf:s0                        0 1970-01-01 09:00 cg2_bpf
+crw-------  1 root      root            u:object_r:console_device:s0               5,   1 1970-01-01 09:00 console
+crw-------  1 root      root            u:object_r:device:s0                      10,  52 1970-01-01 09:00 coresight-tmc-etf
+crw-------  1 root      root            u:object_r:device:s0                      10,  51 1970-01-01 09:00 coresight-tmc-etr
+crw-------  1 root      root            u:object_r:latency_device:s0              10,  50 1970-01-01 09:00 cpu_dma_latency
+-r--r--r--  1 root      root            u:object_r:dev_cpu_variant:s0                   9 1970-01-01 09:00 cpu_variant:arm
+-r--r--r--  1 root      root            u:object_r:dev_cpu_variant:s0                   7 1970-01-01 09:00 cpu_variant:arm64
+dr-xr-xr-x  3 system    system          u:object_r:cgroup:s0                            0 1970-01-01 09:00 cpuctl
+dr-xr-xr-x 10 system    system          u:object_r:cgroup:s0                            0 1970-01-01 09:00 cpuset
+crw-rw----  1 nfc       nfc             u:object_r:nfc_device:s0                  10,  57 1970-01-01 09:00 cxd22xx-i2c
+crw-------  1 root      root            u:object_r:device:s0                     252,   0 1970-01-01 09:00 dcc_sram
+crw-------  1 root      root            u:object_r:dm_device:s0                   10, 236 1970-01-01 09:00 device-mapper
+crw-rw----  1 system    vendor_qti_diag u:object_r:diag_device:s0                511,   0 1970-01-01 09:00 diag
+crw-rw----  1 usb       usb             u:object_r:rmnet_device:s0               503,   1 1970-01-01 09:00 dpl_ctrl
+drwxr-xr-x  2 root      root            u:object_r:device:s0                           80 1970-01-01 09:00 dri
+crw-------  1 root      root            u:object_r:device:s0                      10,  60 1970-01-01 09:00 ecryptfs
+lrwxrwxrwx  1 root      root            u:object_r:device:s0                           13 1970-01-01 09:00 fd -> /proc/self/fd
+crw-rw-rw-  1 root      root            u:object_r:ff_device:s0                   10,  58 1970-01-01 09:00 focaltech_fp
+crw-------  1 root      root            u:object_r:device:s0                      10,  21 1970-01-01 09:00 fs16xx
+drwxrwx---  2 root      system          u:object_r:fscklogs:s0                         40 2026-09-13 03:35 fscklogs
+crw-rw-rw-  1 root      root            u:object_r:device:s0                       1,   7 1970-01-01 09:00 full
+crw-------  1 root      root            u:object_r:fuse_device:s0                 10, 229 1970-01-01 09:00 fuse
+crw-rw-rw-  1 root      root            u:object_r:fingerprintd_device:s0        502,   0 1970-01-01 09:00 goodix_fp
+crw-------  1 root      root            u:object_r:device:s0                     254,   0 1970-01-01 09:00 gpiochip0
+crw-------  1 root      root            u:object_r:device:s0                     254,   1 1970-01-01 09:00 gpiochip1
+crw-------  1 root      root            u:object_r:device:s0                     254,   2 1970-01-01 09:00 gpiochip2
+crw-------  1 root      root            u:object_r:device:s0                     254,   3 1970-01-01 09:00 gpiochip3
+crw-------  1 root      root            u:object_r:device:s0                     254,   4 1970-01-01 09:00 gpiochip4
+crw-------  1 root      root            u:object_r:device:s0                      10,  59 1970-01-01 09:00 gtp_tools
+crw-------  1 root      root            u:object_r:hw_random_device:s0            10, 183 1970-01-01 09:00 hw_random
+crw-rw-rw-  1 root      root            u:object_r:hwbinder_device:s0             10,  54 1970-01-01 09:00 hwbinder
+crw-------  1 root      root            u:object_r:device:s0                      89,  10 1970-01-01 09:00 i2c-10
+crw-------  1 root      root            u:object_r:device:s0                      89,  11 1970-01-01 09:00 i2c-11
+crw-------  1 root      root            u:object_r:device:s0                      89,  12 1970-01-01 09:00 i2c-12
+crw-------  1 root      root            u:object_r:device:s0                      89,   9 1970-01-01 09:00 i2c-9
+crw-------  1 root      root            u:object_r:device:s0                     505,   0 1970-01-01 09:00 icesdcc
+crw-------  1 root      root            u:object_r:device:s0                     506,   0 1970-01-01 09:00 iceufs
+crw-------  1 root      root            u:object_r:iio_device:s0                 242,   0 1970-01-01 09:00 iio:device0
+crw-------  1 root      root            u:object_r:iio_device:s0                 242,   1 1970-01-01 09:00 iio:device1
+drwxr-xr-x  2 root      root            u:object_r:input_device:s0                    200 2026-10-02 00:10 input
+crw-rw-r--  1 system    system          u:object_r:ion_device:s0                  10,  62 1970-01-01 09:00 ion
+crw-rw----  1 radio     radio           u:object_r:ipa_dev:s0                    245,   0 1970-01-01 09:00 ipa
+crw-------  1 root      root            u:object_r:device:s0                     489,   0 1970-01-01 09:00 ipaIpv6CTTable
+crw-rw----  1 radio     radio           u:object_r:ipa_dev:s0                    490,   0 1970-01-01 09:00 ipaNatTable
+crw-rw----  1 system    vendor_adpl_odl u:object_r:ipa_dev:s0                    244,   0 1970-01-01 09:00 ipa_adpl
+crw-rw----  1 radio     radio           u:object_r:ipa_dev:s0                    243,   0 1970-01-01 09:00 ipa_odl_ctl
+crw-------  1 root      root            u:object_r:device:s0                     488,   0 1970-01-01 09:00 ipa_tethering_bridge
+crw-rw-rw-  1 system    system          u:object_r:gpu_device:s0                 510,   0 2026-10-15 18:16 kgsl-3d0
+crw--w----  1 root      system          u:object_r:kmsg_device:s0                  1,  11 1970-01-01 09:00 kmsg
+crw-------  1 root      root            u:object_r:loop_control_device:s0         10, 237 1970-01-01 09:00 loop-control
+crw-rw----  1 system    camera          u:object_r:video_device:s0               248,   0 1970-01-01 09:00 media0
+crw-rw----  1 system    camera          u:object_r:video_device:s0               248,   1 1970-01-01 09:00 media1
+drwxr-xr-x  4 system    system          u:object_r:cgroup:s0                            0 1970-01-01 09:00 memcg
+crw-------  1 root      root            u:object_r:device:s0                      10,  47 1970-01-01 09:00 memory_bandwidth
+crw-------  1 root      root            u:object_r:device:s0                     256,   0 1970-01-01 09:00 msm-rng
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  41 1970-01-01 09:00 msm_aac
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  44 1970-01-01 09:00 msm_aac_in
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  40 1970-01-01 09:00 msm_alac
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  39 1970-01-01 09:00 msm_amrnb
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  43 1970-01-01 09:00 msm_amrnb_in
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  38 1970-01-01 09:00 msm_amrwb
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  42 1970-01-01 09:00 msm_amrwb_in
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  37 1970-01-01 09:00 msm_amrwbplus
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  36 1970-01-01 09:00 msm_ape
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  46 1970-01-01 09:00 msm_audio_cal
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  35 1970-01-01 09:00 msm_evrc
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  26 1970-01-01 09:00 msm_evrc_in
+crw-------  1 root      root            u:object_r:audio_device:s0                10,  34 1970-01-01 09:00 msm_g711alaw
+crw-------  1 root      root            u:object_r:audio_device:s0                10,  25 1970-01-01 09:00 msm_g711alaw_in
+crw-------  1 root      root            u:object_r:audio_device:s0                10,  33 1970-01-01 09:00 msm_g711mlaw
+crw-------  1 root      root            u:object_r:audio_device:s0                10,  24 1970-01-01 09:00 msm_g711mlaw_in
+crw-------  1 root      root            u:object_r:audio_device:s0               509,   0 1970-01-01 09:00 msm_hdcp
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  32 1970-01-01 09:00 msm_hweffects
+crw-------  1 root      root            u:object_r:audio_device:s0                10,  31 1970-01-01 09:00 msm_mp3
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  30 1970-01-01 09:00 msm_multi_aac
+crw-r--r--  1 system    system          u:object_r:npu_device:s0                 500,   0 1970-01-01 09:00 msm_npu
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  29 1970-01-01 09:00 msm_qcelp
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  23 1970-01-01 09:00 msm_qcelp_in
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  45 1970-01-01 09:00 msm_rtac
+crw-------  1 root      root            u:object_r:audio_device:s0               251,   0 1970-01-01 09:00 msm_sps
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  28 1970-01-01 09:00 msm_wma
+crw-rw----  1 system    audio           u:object_r:audio_device:s0                10,  27 1970-01-01 09:00 msm_wmapro
+crw-rw----  1 root      mtp             u:object_r:mtp_device:s0                  10,  20 1970-01-01 09:00 mtp_usb
+crw-------  1 root      root            u:object_r:device:s0                      10,  49 1970-01-01 09:00 network_latency
+crw-------  1 root      root            u:object_r:device:s0                      10,  48 1970-01-01 09:00 network_throughput
+crw-rw-rw-  1 root      root            u:object_r:null_device:s0                  1,   3 1970-01-01 09:00 null
+crw-rw----  1 radio     vpn             u:object_r:ppp_device:s0                 108,   0 1970-01-01 09:00 ppp
+crw-rw-rw-  1 root      root            u:object_r:ptmx_device:s0                  5,   2 2026-10-15 18:17 ptmx
+drwxr-xr-x  2 root      root            u:object_r:devpts:s0                            0 1970-01-01 09:00 pts
+crw-rw----  1 system    drmrpc          u:object_r:qce_device:s0                 507,   0 1970-01-01 09:00 qce
+crw-rw----  1 system    system          u:object_r:qg_device:s0                  495,   0 1970-01-01 09:00 qg
+crw-rw----  1 system    system          u:object_r:qg_device:s0                  496,   0 1970-01-01 09:00 qg_battery
+crw-rw----  1 system    drmrpc          u:object_r:tee_device:s0                 508,   0 1970-01-01 09:00 qseecom
+crw-rw----  1 system    system          u:object_r:qvr_external_sensor_device:s0 498,   0 1970-01-01 09:00 qvr_external_sensor_ioctl
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  14 1970-01-01 09:00 ramdump_a615_zap
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   8 1970-01-01 09:00 ramdump_adsp
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   6 1970-01-01 09:00 ramdump_cdsp
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  10 1970-01-01 09:00 ramdump_ipa_fws
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  15 1970-01-01 09:00 ramdump_md_a615_zap
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   9 1970-01-01 09:00 ramdump_md_adsp
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   7 1970-01-01 09:00 ramdump_md_cdsp
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  11 1970-01-01 09:00 ramdump_md_ipa_fws
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   5 1970-01-01 09:00 ramdump_md_modem
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  18 1970-01-01 09:00 ramdump_md_npu
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  13 1970-01-01 09:00 ramdump_md_venus
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   3 1970-01-01 09:00 ramdump_memshare_DIAG
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   2 1970-01-01 09:00 ramdump_memshare_FTM
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   1 1970-01-01 09:00 ramdump_memshare_GPS
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  16 1970-01-01 09:00 ramdump_microdump_modem
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   4 1970-01-01 09:00 ramdump_modem
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  17 1970-01-01 09:00 ramdump_npu
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,  12 1970-01-01 09:00 ramdump_venus
+crw-r-----  1 system    system          u:object_r:ramdump_device:s0             240,   0 1970-01-01 09:00 ramdump_wcss_msa0
+crw-rw-rw-  1 root      root            u:object_r:random_device:s0                1,   8 1970-01-01 09:00 random
+crw-------  1 root      root            u:object_r:device:s0                      10,  61 1970-01-01 09:00 rfkill
+crw-rw----  1 usb       usb             u:object_r:rmnet_device:s0               503,   0 1970-01-01 09:00 rmnet_ctrl
+crw-------  1 root      root            u:object_r:device:s0                     253,   0 1970-01-01 09:00 rpmsg_ctrl0
+crw-------  1 root      root            u:object_r:device:s0                     253,   1 1970-01-01 09:00 rpmsg_ctrl1
+crw-------  1 root      root            u:object_r:device:s0                     253,   2 1970-01-01 09:00 rpmsg_ctrl2
+crw-------  1 root      root            u:object_r:device:s0                     253,   3 1970-01-01 09:00 rpmsg_ctrl3
+crw-rw----  1 system    system          u:object_r:rtc_device:s0                 249,   0 1970-01-01 09:00 rtc0
+crw-rw----  1 system    drmrpc          u:object_r:smcinvoke_device:s0           238,   0 1970-01-01 09:00 smcinvoke
+crw-rw----  1 radio     radio           u:object_r:smd_device:s0                 236,   5 1970-01-01 09:00 smd11
+crw-rw----  1 bluetooth bluetooth       u:object_r:smd7_device:s0                236,   3 1970-01-01 09:00 smd7
+crw-------  1 root      root            u:object_r:smd_device:s0                 236,   4 1970-01-01 09:00 smd8
+crw-r-----  1 radio     radio           u:object_r:smd_device:s0                 236,   2 1970-01-01 09:00 smdcntl8
+drwxr-xr-x  2 root      root            u:object_r:audio_device:s0                   1960 2026-09-30 17:54 snd
+drwxr-xr-x 10 root      root            u:object_r:socket_device:s0                   940 2026-10-15 04:19 socket
+lrwxrwxrwx  1 root      root            u:object_r:device:s0                           15 1970-01-01 09:00 stderr -> /proc/self/fd/2
+lrwxrwxrwx  1 root      root            u:object_r:device:s0                           15 1970-01-01 09:00 stdin -> /proc/self/fd/0
+lrwxrwxrwx  1 root      root            u:object_r:device:s0                           15 1970-01-01 09:00 stdout -> /proc/self/fd/1
+dr-xr-xr-x  7 system    system          u:object_r:cgroup:s0                            0 1970-01-01 09:00 stune
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   6 1970-01-01 09:00 subsys_a615_zap
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   3 1970-01-01 09:00 subsys_adsp
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   2 1970-01-01 09:00 subsys_cdsp
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   4 1970-01-01 09:00 subsys_ipa_fws
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   0 1970-01-01 09:00 subsys_modem
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   7 1970-01-01 09:00 subsys_npu
+crw-r-----  1 system    system          u:object_r:ssr_device:s0                 239,   5 1970-01-01 09:00 subsys_venus
+crw-------  1 root      root            u:object_r:device:s0                     501,   0 1970-01-01 09:00 tcm0
+crw-rw-rw-  1 root      root            u:object_r:owntty_device:s0                5,   0 1970-01-01 09:00 tty
+crw-rw----  1 root      system          u:object_r:tty_device:s0                   4,   0 1970-01-01 09:00 tty0
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   1 1970-01-01 09:00 tty1
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  10 1970-01-01 09:00 tty10
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  11 1970-01-01 09:00 tty11
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  12 1970-01-01 09:00 tty12
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  13 1970-01-01 09:00 tty13
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  14 1970-01-01 09:00 tty14
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  15 1970-01-01 09:00 tty15
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  16 1970-01-01 09:00 tty16
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  17 1970-01-01 09:00 tty17
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  18 1970-01-01 09:00 tty18
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  19 1970-01-01 09:00 tty19
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   2 1970-01-01 09:00 tty2
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  20 1970-01-01 09:00 tty20
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  21 1970-01-01 09:00 tty21
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  22 1970-01-01 09:00 tty22
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  23 1970-01-01 09:00 tty23
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  24 1970-01-01 09:00 tty24
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  25 1970-01-01 09:00 tty25
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  26 1970-01-01 09:00 tty26
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  27 1970-01-01 09:00 tty27
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  28 1970-01-01 09:00 tty28
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  29 1970-01-01 09:00 tty29
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   3 1970-01-01 09:00 tty3
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  30 1970-01-01 09:00 tty30
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  31 1970-01-01 09:00 tty31
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  32 1970-01-01 09:00 tty32
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  33 1970-01-01 09:00 tty33
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  34 1970-01-01 09:00 tty34
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  35 1970-01-01 09:00 tty35
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  36 1970-01-01 09:00 tty36
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  37 1970-01-01 09:00 tty37
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  38 1970-01-01 09:00 tty38
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  39 1970-01-01 09:00 tty39
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   4 1970-01-01 09:00 tty4
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  40 1970-01-01 09:00 tty40
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  41 1970-01-01 09:00 tty41
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  42 1970-01-01 09:00 tty42
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  43 1970-01-01 09:00 tty43
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  44 1970-01-01 09:00 tty44
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  45 1970-01-01 09:00 tty45
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  46 1970-01-01 09:00 tty46
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  47 1970-01-01 09:00 tty47
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  48 1970-01-01 09:00 tty48
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  49 1970-01-01 09:00 tty49
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   5 1970-01-01 09:00 tty5
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  50 1970-01-01 09:00 tty50
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  51 1970-01-01 09:00 tty51
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  52 1970-01-01 09:00 tty52
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  53 1970-01-01 09:00 tty53
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  54 1970-01-01 09:00 tty54
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  55 1970-01-01 09:00 tty55
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  56 1970-01-01 09:00 tty56
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  57 1970-01-01 09:00 tty57
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  58 1970-01-01 09:00 tty58
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  59 1970-01-01 09:00 tty59
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   6 1970-01-01 09:00 tty6
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  60 1970-01-01 09:00 tty60
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  61 1970-01-01 09:00 tty61
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  62 1970-01-01 09:00 tty62
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,  63 1970-01-01 09:00 tty63
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   7 1970-01-01 09:00 tty7
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   8 1970-01-01 09:00 tty8
+crw-------  1 root      root            u:object_r:tty_device:s0                   4,   9 1970-01-01 09:00 tty9
+crw-rw----  1 bluetooth net_bt          u:object_r:hci_attach_dev:s0             235,   0 2026-10-15 18:17 ttyHS0
+crw-rw----  1 system    vpn             u:object_r:tun_device:s0                  10, 200 1970-01-01 09:00 tun
+crw-rw----  1 uhid      uhid            u:object_r:uhid_device:s0                 10, 239 1970-01-01 09:00 uhid
+crw-rw----  1 uhid      uhid            u:object_r:uhid_device:s0                 10, 223 1970-01-01 09:00 uinput
+crw-rw----  1 system    system          u:object_r:uio_device:s0                 504,   0 1970-01-01 09:00 uio0
+crw-rw-rw-  1 root      root            u:object_r:random_device:s0                1,   9 1970-01-01 09:00 urandom
+drwxrwxr-x  3 shell     system          u:object_r:device:s0                           60 1970-01-01 09:00 usb-ffs
+crw-rw----  1 root      usb             u:object_r:usbaccessory_device:s0         10,  19 1970-01-01 09:00 usb_accessory
+crw-rw----  1 system    system          u:object_r:device:s0                      10,  22 1970-01-01 09:00 usf1
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 128 1970-01-01 09:00 v4l-subdev0
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 129 1970-01-01 09:00 v4l-subdev1
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 138 1970-01-01 09:00 v4l-subdev10
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 139 1970-01-01 09:00 v4l-subdev11
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 140 1970-01-01 09:00 v4l-subdev12
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 141 1970-01-01 09:00 v4l-subdev13
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 142 1970-01-01 09:00 v4l-subdev14
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 143 1970-01-01 09:00 v4l-subdev15
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 144 1970-01-01 09:00 v4l-subdev16
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 145 1970-01-01 09:00 v4l-subdev17
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 146 1970-01-01 09:00 v4l-subdev18
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 147 1970-01-01 09:00 v4l-subdev19
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 130 1970-01-01 09:00 v4l-subdev2
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 148 1970-01-01 09:00 v4l-subdev20
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 149 1970-01-01 09:00 v4l-subdev21
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 150 1970-01-01 09:00 v4l-subdev22
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 151 1970-01-01 09:00 v4l-subdev23
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 152 1970-01-01 09:00 v4l-subdev24
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 153 1970-01-01 09:00 v4l-subdev25
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 154 1970-01-01 09:00 v4l-subdev26
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 155 1970-01-01 09:00 v4l-subdev27
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 156 1970-01-01 09:00 v4l-subdev28
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 157 1970-01-01 09:00 v4l-subdev29
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 131 1970-01-01 09:00 v4l-subdev3
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 158 1970-01-01 09:00 v4l-subdev30
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 132 1970-01-01 09:00 v4l-subdev4
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 133 1970-01-01 09:00 v4l-subdev5
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 134 1970-01-01 09:00 v4l-subdev6
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 135 1970-01-01 09:00 v4l-subdev7
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 136 1970-01-01 09:00 v4l-subdev8
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81, 137 1970-01-01 09:00 v4l-subdev9
+crw-------  1 root      root            u:object_r:device:s0                       7,   0 1970-01-01 09:00 vcs
+crw-------  1 root      root            u:object_r:device:s0                       7,   1 1970-01-01 09:00 vcs1
+crw-------  1 root      root            u:object_r:device:s0                       7,  63 2026-09-12 21:52 vcs63
+crw-------  1 root      root            u:object_r:device:s0                       7, 128 1970-01-01 09:00 vcsa
+crw-------  1 root      root            u:object_r:device:s0                       7, 129 1970-01-01 09:00 vcsa1
+crw-------  1 root      root            u:object_r:device:s0                       7, 191 2026-09-12 21:52 vcsa63
+crw-------  1 root      root            u:object_r:device:s0                      10,  63 1970-01-01 09:00 vga_arbiter
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81,   0 1970-01-01 09:00 video0
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81,   1 1970-01-01 09:00 video1
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81,   2 1970-01-01 09:00 video2
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81,  32 1970-01-01 09:00 video32
+crw-rw----  1 system    camera          u:object_r:video_device:s0                81,  33 1970-01-01 09:00 video33
+crw-rw-rw-  1 root      root            u:object_r:vndbinder_device:s0            10,  53 1970-01-01 09:00 vndbinder
+crw-rw----  1 wifi      wifi            u:object_r:wlan_device:s0                484,   0 1970-01-01 09:00 wlan
+crw-rw----  1 radio     radio           u:object_r:ipa_dev:s0                    487,   0 1970-01-01 09:00 wwan_ioctl
+crw-rw-rw-  1 root      root            u:object_r:zero_device:s0                  1,   5 1970-01-01 09:00 zero
+--- 特に重要なノード ---
+crw-rw-rw- 1 system system u:object_r:gpu_device:s0 510,   0 2026-10-15 18:16 /dev/kgsl-3d0
+crw-rw-r-- 1 system system u:object_r:ion_device:s0 10,  62 1970-01-01 09:00 /dev/ion
+crw-rw-rw- 1 root root u:object_r:ashmem_device:s0 10,  56 1970-01-01 09:00 /dev/ashmem
+crw-rw-rw- 1 root root u:object_r:binder_device:s0 10,  55 1970-01-01 09:00 /dev/binder
+crw-rw-rw- 1 root root u:object_r:hwbinder_device:s0 10,  54 1970-01-01 09:00 /dev/hwbinder
+crw-rw-rw- 1 root root u:object_r:vndbinder_device:s0 10,  53 1970-01-01 09:00 /dev/vndbinder
+crw------- 1 root root u:object_r:fuse_device:s0 10, 229 1970-01-01 09:00 /dev/fuse
+crw-rw---- 1 system vpn u:object_r:tun_device:s0 10, 200 1970-01-01 09:00 /dev/tun
+crw-rw---- 1 system vendor_qti_diag u:object_r:diag_device:s0 511,   0 1970-01-01 09:00 /dev/diag
+crw-rw-r-- 1 system system u:object_r:qdsp_device:s0 492,   0 1970-01-01 09:00 /dev/adsprpc-smd
+crw-rw---- 1 system drmrpc u:object_r:qce_device:s0 507,   0 1970-01-01 09:00 /dev/qce
+crw-rw---- 1 system drmrpc u:object_r:tee_device:s0 508,   0 1970-01-01 09:00 /dev/qseecom
+crw-rw---- 1 system camera u:object_r:video_device:s0 81,   0 1970-01-01 09:00 /dev/video0
+crw-rw---- 1 system camera u:object_r:video_device:s0 248,   0 1970-01-01 09:00 /dev/media0
+crw-rw---- 1 system camera u:object_r:video_device:s0 81, 128 1970-01-01 09:00 /dev/v4l-subdev0
+
+################ 5. /proc ・ /sys の書き込み可能候補 (0666/0660) ################
+--- himax / touch / tinno 関連 ---
+dr-xr-xr-x   2 root           root            u:object_r:proc:s0                               0 2026-10-15 18:17 tinno_demomode_charge
+dr-xr-xr-x   2 root           root            u:object_r:proc:s0                               0 2026-10-15 18:17 tinno_long_charge
+total 0
+drwxr-xr-x 2 root root u:object_r:sysfs_android_usb:s0    0 2026-10-15 18:17 android_usb
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 avtimer
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:15 backlight
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 bdi
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 block
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 bluetooth
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 bsg
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 bt-dev
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 ccid_usb
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 coresight-tmc-etr-stream
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 dcc_sram
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 devcoredump
+drwxr-xr-x 2 root root u:object_r:sysfs_devfreq:s0        0 2026-10-15 18:17 devfreq
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 diag
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 dma
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 drm
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 dual_role_usb
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 dvb
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 esoc-dev
+drwxr-xr-x 2 root root u:object_r:sysfs_extcon:s0         0 2026-10-15 18:17 extcon
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 fastrpc
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 firmware
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 fs16xx
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 glinkpkt
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 goodix_fp
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 gpio
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 graphics
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 gsi_usb
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 hdcp
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 hwmon
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 i2c-adapter
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 i2c-dev
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 icesdcc
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 iceufs
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 ieee80211
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 input
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 iommu
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 ipa
+drwxr-xr-x 2 root root u:object_r:sysfs:s0                0 2026-10-15 18:17 ipaIpv6CTTable
+--- sysfs で world-writable なもの (先頭500件走査) ---
+/sys/fs/selinux/validatetrans
+/sys/fs/selinux/member
+/sys/fs/selinux/user
+/sys/fs/selinux/relabel
+/sys/fs/selinux/create
+/sys/fs/selinux/access
+/sys/fs/selinux/context
+
+################ 6. パーティション ################
+total 0
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 abl_a -> /dev/block/mmcblk0p23
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 abl_b -> /dev/block/mmcblk0p24
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 aop_a -> /dev/block/mmcblk0p4
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 aop_b -> /dev/block/mmcblk0p45
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 apdp -> /dev/block/mmcblk0p72
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 bluetooth_a -> /dev/block/mmcblk0p26
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 bluetooth_b -> /dev/block/mmcblk0p27
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 boot_a -> /dev/block/mmcblk0p47
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 boot_b -> /dev/block/mmcblk0p48
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 catecontentfv -> /dev/block/mmcblk0p39
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 catefv -> /dev/block/mmcblk0p38
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 cateloader -> /dev/block/mmcblk0p76
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 cmnlib64_a -> /dev/block/mmcblk0p12
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 cmnlib64_b -> /dev/block/mmcblk0p14
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 cmnlib_a -> /dev/block/mmcblk0p11
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 cmnlib_b -> /dev/block/mmcblk0p13
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 ddr -> /dev/block/mmcblk0p25
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 devcfg_a -> /dev/block/mmcblk0p66
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 devcfg_b -> /dev/block/mmcblk0p67
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 devinfo -> /dev/block/mmcblk0p28
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 dip -> /dev/block/mmcblk0p29
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 dsp_a -> /dev/block/mmcblk0p21
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 dsp_b -> /dev/block/mmcblk0p22
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 dtbo_a -> /dev/block/mmcblk0p53
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 dtbo_b -> /dev/block/mmcblk0p54
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 elabel -> /dev/block/mmcblk0p77
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 frp -> /dev/block/mmcblk0p70
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 fsc -> /dev/block/mmcblk0p81
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 fsg -> /dev/block/mmcblk0p41
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 hyp_a -> /dev/block/mmcblk0p5
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 hyp_b -> /dev/block/mmcblk0p46
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 imagefv_a -> /dev/block/mmcblk0p55
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 imagefv_b -> /dev/block/mmcblk0p56
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 journey_fdr_wipe -> /dev/block/mmcblk0p60
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 journey_persist -> /dev/block/mmcblk0p61
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 journey_raw -> /dev/block/mmcblk0p62
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 keymaster_a -> /dev/block/mmcblk0p8
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 keymaster_b -> /dev/block/mmcblk0p9
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 keystore -> /dev/block/mmcblk0p65
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 limits -> /dev/block/mmcblk0p30
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 logdump -> /dev/block/mmcblk0p78
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 logfs -> /dev/block/mmcblk0p75
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 mdcompress -> /dev/block/mmcblk0p10
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 mdtp_a -> /dev/block/mmcblk0p17
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 mdtp_b -> /dev/block/mmcblk0p18
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 mdtpsecapp_a -> /dev/block/mmcblk0p15
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 mdtpsecapp_b -> /dev/block/mmcblk0p16
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 metadata -> /dev/block/mmcblk0p63
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 misc -> /dev/block/mmcblk0p64
+lrwxrwxrwx 1 root root 18 1970-01-01 09:00 mmcblk0 -> /dev/block/mmcblk0
+lrwxrwxrwx 1 root root 22 1970-01-01 09:00 mmcblk0rpmb -> /dev/block/mmcblk0rpmb
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 modem_a -> /dev/block/mmcblk0p19
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 modem_b -> /dev/block/mmcblk0p20
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 modemst1 -> /dev/block/mmcblk0p79
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 modemst2 -> /dev/block/mmcblk0p80
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 multiimgoem -> /dev/block/mmcblk0p35
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 multiimgqti -> /dev/block/mmcblk0p36
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 persist -> /dev/block/mmcblk0p59
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 qupfw_a -> /dev/block/mmcblk0p68
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 qupfw_b -> /dev/block/mmcblk0p69
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 rawdump -> /dev/block/mmcblk0p71
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 recovery_a -> /dev/block/mmcblk0p50
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 recovery_b -> /dev/block/mmcblk0p51
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 secdata -> /dev/block/mmcblk0p37
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 splash -> /dev/block/mmcblk0p74
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 spunvm -> /dev/block/mmcblk0p73
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 ssd -> /dev/block/mmcblk0p52
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 storsec -> /dev/block/mmcblk0p34
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 super -> /dev/block/mmcblk0p49
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 toolsfv -> /dev/block/mmcblk0p31
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 tz_a -> /dev/block/mmcblk0p3
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 tz_b -> /dev/block/mmcblk0p44
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 uefisecapp_a -> /dev/block/mmcblk0p57
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 uefisecapp_b -> /dev/block/mmcblk0p58
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 uefivarstore -> /dev/block/mmcblk0p40
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 userdata -> /dev/block/mmcblk0p82
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 vbmeta_a -> /dev/block/mmcblk0p32
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 vbmeta_b -> /dev/block/mmcblk0p33
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 vbmeta_system_a -> /dev/block/mmcblk0p6
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 vbmeta_system_b -> /dev/block/mmcblk0p7
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 xbl_a -> /dev/block/mmcblk0p1
+lrwxrwxrwx 1 root root 20 1970-01-01 09:00 xbl_b -> /dev/block/mmcblk0p2
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 xbl_config_a -> /dev/block/mmcblk0p42
+lrwxrwxrwx 1 root root 21 1970-01-01 09:00 xbl_config_b -> /dev/block/mmcblk0p43
+cat: /proc/partitions: Permission denied
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/block/dm-6       1.5G  1.5G     0 100% /
+tmpfs                 1.7G  1.0M  1.7G   1% /dev
+tmpfs                 1.7G     0  1.7G   0% /mnt
+tmpfs                 1.7G     0  1.7G   0% /apex
+/dev/block/mmcblk0p63  11M  116K   11M   2% /metadata
+/dev/block/dm-7       782M  780M     0 100% /vendor
+/dev/block/dm-8       2.0G  2.0G     0 100% /product
+/dev/block/mmcblk0p61  27M  2.5M   23M  10% /mnt/journey/persist
+/dev/block/mmcblk0p60 5.6M   28K  5.3M   1% /mnt/journey/fdr_wipe
+/dev/block/mmcblk0p62 992K   28K  936K   3% /mnt/journey/raw
+/dev/block/dm-9        48G   43G  4.8G  90% /data
+/dev/block/dm-10      772K  744K   16K  98% /apex/com.android.tzdata@299301000
+/dev/block/dm-11       19M   19M     0 100% /apex/com.android.media.swcodec@331511000
+/dev/block/dm-12      5.6M  5.6M     0 100% /apex/com.android.media@331511000
+/dev/block/dm-13      4.6M  4.6M     0 100% /apex/com.android.conscrypt@331411000
+/dev/block/dm-14      3.8M  3.8M     0 100% /apex/com.android.resolv@331512000
+/dev/block/loop7       99M   99M     0 100% /apex/com.android.runtime@1
+/dev/block/loop8      232K   36K  192K  16% /apex/com.android.apex.cts.shim@1
+/data/media            48G   43G  4.8G  90% /storage/emulated
+/dev/block/dm-6 on / type ext4 (ro,seclabel,relatime,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/dm-7 on /vendor type ext4 (ro,seclabel,relatime,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/dm-9 on /data type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,resuid=0,resgid=1065,alloc_mode=default,fsync_mode=nobarrier)
+
+################ 7. サービス / 権限のヒント ################
+[init.svc.keymaster-4-0]: [running]
+[init.svc.keystore]: [running]
+[init.svc.qteeconnector-hal-1-0]: [running]
+[init.svc.wait_for_keymaster]: [stopped]
+[ro.adb.secure]: [1]
+[ro.boot.keymaster]: [1]
+[ro.hardware.keystore_desede]: [true]
+[ro.journey.feature.secure]: [yes]
+[ro.secure]: [1]
+[selinux.restorecon_recursive]: [/data/misc_ce/0]
+package:com.android.cts.priv.ctsshim
+package:com.qualcomm.qti.qms.service.telemetry
+package:com.google.android.youtube
+package:com.android.internal.display.cutout.emulation.corner
+package:com.google.android.ext.services
+package:com.qualcomm.qti.improvetouch.service
+package:com.android.internal.display.cutout.emulation.double
+package:com.android.providers.telephony
+package:com.android.dynsystem
+package:com.google.android.googlequicksearchbox
+package:com.android.providers.calendar
+package:com.google.android.apps.googleassistant
+package:com.android.providers.media
+package:com.google.android.apps.docs.editors.docs
+package:com.qti.service.colorservice
+package:com.google.android.onetimeinitializer
+package:com.google.android.ext.shared
+package:com.android.internal.systemui.navbar.gestural_wide_back
+package:com.ape.soundrecorderoverlay
+package:com.qualcomm.qti.simcontacts
+package:com.android.wallpapercropper
+package:com.android.theme.color.cinnamon
+package:com.android.theme.icon_pack.rounded.systemui
+package:com.myos.camera
+package:com.android.externalstorage
+package:com.qualcomm.uimremoteclient
+package:com.android.htmlviewer
+package:com.qualcomm.qti.uceShimService
+package:com.android.companiondevicemanager
+package:com.felicanetworks.mfw.a.boot
+--- 到達可能な binder サービス(hwbinder/binder) ---
+total 0
+drwxrwxr-x 2 audioserver audioserver u:object_r:socket_device:s0 40 1970-01-01 09:00 audioserver
+drwxrwx--- 2 wifi        wifi        u:object_r:socket_device:s0 40 1970-01-01 09:00 wigig
+uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid) context=u:r:shell:s0
+u:r:shell:s0 
+################ 8. dmesg(可能なら) ################
+dmesg: klogctl: Permission denied
+################ DONE ################

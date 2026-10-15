@@ -1,0 +1,2 @@
+getprop ro.build.version.security_patch
+2023-01-01
